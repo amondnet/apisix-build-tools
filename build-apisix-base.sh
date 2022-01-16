@@ -16,7 +16,7 @@ if ([ $# -gt 0 ] && [ "$1" == "latest" ]) || [ "$version" == "latest" ]; then
     --add-module=../apisix-nginx-module/src/stream \
     --add-module=../wasm-nginx-module \
     --add-module=../lua-var-nginx-module \
-    --add-module=./ngx_brotli \
+    --add-module=../ngx_brotli \
     "
     OR_PREFIX=${OR_PREFIX:="/usr/local/openresty-debug"}
 else
@@ -32,7 +32,7 @@ else
     --add-module=../apisix-nginx-module \
     --add-module=../wasm-nginx-module \
     --add-module=../lua-var-nginx-module \
-    --add-module=./ngx_brotli \
+    --add-module=../ngx_brotli \
     "
     OR_PREFIX=${OR_PREFIX:="/usr/local/openresty"}
 fi
