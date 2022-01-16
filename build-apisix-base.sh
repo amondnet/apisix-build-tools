@@ -16,6 +16,7 @@ if ([ $# -gt 0 ] && [ "$1" == "latest" ]) || [ "$version" == "latest" ]; then
     --add-module=../apisix-nginx-module/src/stream \
     --add-module=../wasm-nginx-module \
     --add-module=../lua-var-nginx-module \
+    --add-dynamic-module=./ngx_brotli \
     "
     OR_PREFIX=${OR_PREFIX:="/usr/local/openresty-debug"}
 else
@@ -31,6 +32,7 @@ else
     --add-module=../apisix-nginx-module \
     --add-module=../wasm-nginx-module \
     --add-module=../lua-var-nginx-module \
+    --add-dynamic-module=./ngx_brotli \
     "
     OR_PREFIX=${OR_PREFIX:="/usr/local/openresty"}
 fi
@@ -89,6 +91,13 @@ cd ../..
 
 cd wasm-nginx-module || exit 1
 ./install-wasmtime.sh
+cd ..
+
+## Install brotli
+git clone --depth=1 https://github.com/google/ngx_brotli.git
+cd ngx_brotli
+git submodule init
+git submodule update
 cd ..
 
 version=${version:-0.0.0}
