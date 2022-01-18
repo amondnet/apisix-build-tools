@@ -1,8 +1,13 @@
 name: Build and Push image
 
 on:
-  create
-
+  #create
+  workflow_dispatch:
+    inputs:
+      tag:
+        default: 'firebase'
+        description: 'firebase, testflight'
+        required: true
 jobs:
   publish_image:
     name: Build and Push apisix-base image
